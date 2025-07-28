@@ -1,0 +1,26 @@
+{
+  "name": "marmiplon",
+  "version": "1.0.0",
+  "description": "Application de recette de cuisines",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quentindrms/marmiplon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Quentindrms/marmiplon/issues"
+  },
+  "homepage": "https://github.com/Quentindrms/marmiplon#readme",
+  "dependencies": {
+    "@types/express": "^5.0.3",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "tsx": "^4.20.3"
+  }
+}
