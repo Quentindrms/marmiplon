@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marmiplon - Découvrez de délicieuses recettes</title>
+    <meta name="description" content="Marmiplon - Votre application de recettes de cuisine. Découvrez des entrées, plats principaux et desserts délicieux.">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="/" class="nav-logo">
+                    <span class="logo-icon">🍳</span>
+                    <span class="logo-text">Marmiplon</span>
+                </a>
+                
+                <!-- Menu mobile toggle -->
+                <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu">
+                    <span class="nav-toggle-line"></span>
+                    <span class="nav-toggle-line"></span>
+                    <span class="nav-toggle-line"></span>
+                </button>
+                
+                <div class="nav-menu" id="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#home" class="nav-link active">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#categories" class="nav-link">Catégories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#search" class="nav-link">Recherche</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Bienvenue sur <span class="text-accent">Marmiplon</span>
+                    </h1>
+                    <p class="hero-description">
+                        Découvrez une collection de recettes délicieuses et faciles à préparer. 
+                        Des entrées aux desserts, trouvez l'inspiration pour vos repas quotidiens.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#categories" class="btn btn-primary">
+                            Découvrir les recettes
+                        </a>
+                        <a href="#search" class="btn btn-secondary">
+                            Rechercher une recette
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-card">
+                    <span class="hero-icon">👨‍🍳</span>
+                    <h3>Cuisine avec passion</h3>
+                    <p>Des recettes testées et approuvées</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section class="search-section" id="search">
+            <div class="container">
+                <h2 class="section-title">Rechercher une recette</h2>
+                <div class="search-container">
+                    <form class="search-form" id="search-form">
+                        <div class="search-input-group">
+                            <input 
+                                type="text" 
+                                id="search-input" 
+                                class="search-input" 
+                                placeholder="Tapez le nom d'une recette ou d'un ingrédient..."
+                                autocomplete="off"
+                            >
+                            <button type="submit" class="search-btn" aria-label="Rechercher">
+                                <span class="search-icon">🔍</span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- Résultats de recherche -->
+                    <div class="search-results" id="search-results" style="display: none;">
+                        <h3 class="search-results-title">Résultats de recherche</h3>
+                        <div class="search-results-list" id="search-results-list">
+                            <!-- Les résultats seront insérés ici via JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories-section" id="categories">
+            <div class="container">
+                <h2 class="section-title">Nos catégories</h2>
+                <p class="section-description">
+                    Explorez nos différentes catégories de recettes pour tous les goûts
+                </p>
+                
+                <div class="categories-grid" id="categories-grid">
+                    <!-- Les catégories seront chargées ici via JavaScript -->
+                    <div class="loading-spinner" id="categories-loading">
+                        <div class="spinner"></div>
+                        <p>Chargement des catégories...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Recipes Section -->
+        <section class="popular-section" id="popular">
+            <div class="container">
+                <h2 class="section-title">Recettes populaires</h2>
+                <div class="recipes-grid" id="popular-recipes">
+                    <!-- Les recettes populaires seront chargées ici -->
+                    <div class="loading-spinner" id="recipes-loading">
+                        <div class="spinner"></div>
+                        <p>Chargement des recettes...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Recipe Detail Modal -->
+    <div class="modal" id="recipe-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-recipe-title">Titre de la recette</h2>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Le contenu de la recette sera chargé ici -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">
+                        <span class="logo-icon">🍳</span>
+                        <span class="logo-text">Marmiplon</span>
+                    </a>
+                    <p class="footer-description">
+                        Votre compagnon culinaire pour découvrir de délicieuses recettes
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#home">Accueil</a></li>
+                        <li><a href="#categories">Catégories</a></li>
+                        <li><a href="#search">Recherche</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-stats" id="footer-stats">
+                    <h4>Statistiques</h4>
+                    <div class="stats-list">
+                        <div class="stat-item">
+                            <span class="stat-number" id="total-recipes">--</span>
+                            <span class="stat-label">Recettes</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="total-categories">--</span>
+                            <span class="stat-label">Catégories</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Marmiplon. Tous droits réservés.</p>
+                <p>Fait avec ❤️ pour les amateurs de cuisine</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Messages de notification -->
+    <div class="notification" id="notification" style="display: none;">
+        <span class="notification-message" id="notification-message"></span>
+        <button class="notification-close" id="notification-close">&times;</button>
+    </div>
+
+    <script>
+        // === DONNÉES DE L'APPLICATION ===
+        
+        // Types de données
+        const categories = [
+            {
+                id: 1,
+                name: "Entrées",
+                description: "Des entrées délicieuses pour commencer le repas.",
+            },
+            {
+                id: 2,
+                name: "Plats principaux",
+                description: "Des plats principaux savoureux pour le cœur du repas.",
+            },
+            {
+                id: 3,
+                name: "Desserts",
+                description: "Des desserts sucrés pour terminer le repas sur une note agréable.",
+            },
+        ];
+
+        const ingredients = [
+            { id: 1, name: "Pain" },
+            { id: 2, name: "Tomates" },
+            { id: 3, name: "Basilic" },
+            { id: 4, name: "Huile d'olive" },
+            { id: 5, name: "Concombre" },
+            { id: 6, name: "Oignons rouges" },
+            { id: 7, name: "Feta" },
+            { id: 8, name: "Olives" },
+            { id: 9, name: "Pâtes" },
+            { id: 10, name: "Œufs" },
+            { id: 11, name: "Pancetta" },
+            { id: 12, name: "Parmesan" },
+            { id: 13, name: "Poivre" },
+            { id: 14, name: "Poulet" },
+            { id: 15, name: "Herbes de Provence" },
+            { id: 16, name: "Ail" },
+            { id: 17, name: "Beurre" },
+            { id: 18, name: "Biscuits à la cuillère" },
+            { id: 19, name: "Café" },
+            { id: 20, name: "Mascarpone" },
+            { id: 21, name: "Cacao" },
+            { id: 22, name: "Pâte brisée" },
+            { id: 23, name: "Pommes" },
+            { id: 24, name: "Sucre" },
+            { id: 25, name: "Cannelle" },
+        ];
+
+        const recipeIngredients = [
+            { id: 1, quantity: 1, unit: "tranche", ingredientId: 1, recipeId: 101 },
+            { id: 2, quantity: 2, unit: "unités", ingredientId: 2, recipeId: 101 },
+            { id: 3, quantity: 5, unit: "feuilles", ingredientId: 3, recipeId: 101 },
+            { id: 4, quantity: 2, unit: "cuillères à soupe", ingredientId: 4, recipeId: 101 },
+            { id: 5, quantity: 1, unit: "unité", ingredientId: 5, recipeId: 102 },
+            { id: 6, quantity: 2, unit: "unités", ingredientId: 2, recipeId: 102 },
+            { id: 7, quantity: 1, unit: "unité", ingredientId: 6, recipeId: 102 },
+            { id: 8, quantity: 200, unit: "grammes", ingredientId: 7, recipeId: 102 },
+            { id: 9, quantity: 10, unit: "unités", ingredientId: 8, recipeId: 102 },
+            { id: 10, quantity: 400, unit: "grammes", ingredientId: 9, recipeId: 201 },
+            { id: 11, quantity: 2, unit: "unités", ingredientId: 10, recipeId: 201 },
+            { id: 12, quantity: 100, unit: "grammes", ingredientId: 11, recipeId: 201 },
+            { id: 13, quantity: 50, unit: "grammes", ingredientId: 12, recipeId: 201 },
+            { id: 14, quantity: 1, unit: "pincée", ingredientId: 13, recipeId: 201 },
+            { id: 15, quantity: 1, unit: "unité", ingredientId: 14, recipeId: 202 },
+            { id: 16, quantity: 10, unit: "grammes", ingredientId: 15, recipeId: 202 },
+            { id: 17, quantity: 2, unit: "gousses", ingredientId: 16, recipeId: 202 },
+            { id: 18, quantity: 50, unit: "grammes", ingredientId: 17, recipeId: 202 },
+            { id: 19, quantity: 200, unit: "grammes", ingredientId: 18, recipeId: 301 },
+            { id: 20, quantity: 250, unit: "millilitres", ingredientId: 19, recipeId: 301 },
+            { id: 21, quantity: 250, unit: "grammes", ingredientId: 20, recipeId: 301 },
+            { id: 22, quantity: 2, unit: "unités", ingredientId: 10, recipeId: 301 },
+            { id: 23, quantity: 20, unit: "grammes", ingredientId: 21, recipeId: 301 },
+            { id: 24, quantity: 1, unit: "unité", ingredientId: 22, recipeId: 302 },
+            { id: 25, quantity: 6, unit: "unités", ingredientId: 23, recipeId: 302 },
+            { id: 26, quantity: 100, unit: "grammes", ingredientId: 24, recipeId: 302 },
+            { id: 27, quantity: 10, unit: "grammes", ingredientId: 25, recipeId: 302 },
+        ];
+
+        const recipeInstructions = [
+            { id: 1, step: 1, description: "Grillez le pain.", recipeId: 101 },
+            { id: 2, step: 2, description: "Ajoutez les tomates et le basilic.", recipeId: 101 },
+            { id: 3, step: 3, description: "Arrosez d'huile d'olive.", recipeId: 101 },
+            { id: 4, step: 1, description: "Coupez les légumes.", recipeId: 102 },
+            { id: 5, step: 2, description: "Ajoutez la feta et les olives.", recipeId: 102 },
+            { id: 6, step: 3, description: "Assaisonnez.", recipeId: 102 },
+            { id: 7, step: 1, description: "Faites cuire les pâtes.", recipeId: 201 },
+            { id: 8, step: 2, description: "Mélangez avec les œufs, la pancetta et le parmesan.", recipeId: 201 },
+            { id: 9, step: 1, description: "Préchauffez le four.", recipeId: 202 },
+            { id: 10, step: 2, description: "Badigeonnez le poulet d'herbes et de beurre.", recipeId: 202 },
+            { id: 11, step: 3, description: "Faites rôtir.", recipeId: 202 },
+            { id: 12, step: 1, description: "Trempez les biscuits dans le café.", recipeId: 301 },
+            { id: 13, step: 2, description: "Alternez avec la crème au mascarpone.", recipeId: 301 },
+            { id: 14, step: 3, description: "Saupoudrez de cacao.", recipeId: 301 },
+            { id: 15, step: 1, description: "Étalez la pâte.", recipeId: 302 },
+            { id: 16, step: 2, description: "Ajoutez les pommes sucrées et la cannelle.", recipeId: 302 },
+            { id: 17, step: 3, description: "Faites cuire.", recipeId: 302 },
+        ];
+
+        const recipes = [
+            { id: 101, title: "Bruschetta", description: "Une entrée italienne classique." },
+            { id: 102, title: "Salade Grecque", description: "Une salade fraîche et savoureuse." },
+            { id: 201, title: "Pâtes Carbonara", description: "Un plat italien riche et crémeux." },
+            { id: 202, title: "Poulet Rôti", description: "Un poulet rôti aux herbes de Provence." },
+            { id: 301, title: "Tiramisu", description: "Un dessert italien classique." },
+            { id: 302, title: "Tarte aux Pommes", description: "Une tarte sucrée à la cannelle." },
+        ];
+
+        const recipeComments = [
+            {
+                id: 1,
+                username: "Alice",
+                content: "Délicieux et facile à préparer !",
+                note: 5,
+                createdAt: new Date("2025-07-27T12:43:10.475713"),
+                recipeId: 101,
+            },
+            {
+                id: 2,
+                username: "Bob",
+                content: "J'adore les bruschettas, mais j'aurais aimé plus de basilic.",
+                note: 4,
+                createdAt: new Date("2025-07-27T12:43:10.476227"),
+                recipeId: 101,
+            },
+            {
+                id: 3,
+                username: "Charlie",
+                content: "Rafraîchissant et parfait pour l'été !",
+                note: 5,
+                createdAt: new Date("2025-07-27T12:43:10.476254"),
+                recipeId: 102,
+            },
+            {
+                id: 4,
+                username: "David",
+                content: "Très bon, mais un peu trop salé à mon goût.",
+                note: 4,
+                createdAt: new Date("2025-07-27T12:43:10.476257"),
+                recipeId: 201,
+            },
+            {
+                id: 5,
+                username: "Eve",
+                content: "Parfait pour un dîner en famille !",
+                note: 5,
+                createdAt: new Date("2025-07-27T12:43:10.476259"),
+                recipeId: 202,
+            },
+            {
+                id: 6,
+                username: "Frank",
+                content: "Le poulet était un peu sec.",
+                note: 3,
+                createdAt: new Date("2025-07-27T12:43:10.476261"),
+                recipeId: 202,
+            },
+            {
+                id: 7,
+                username: "Grace",
+                content: "Un dessert italien classique, tout simplement délicieux !",
+                note: 5,
+                createdAt: new Date("2025-07-27T12:43:10.476262"),
+                recipeId: 301,
+            },
+            {
+                id: 8,
+                username: "Hank",
+                content: "La tarte était délicieuse",
+                note: 4,
+                createdAt: new Date("2025-07-27T12:43:10.476265"),
+                recipeId: 302,
+            },
+        ];
+
+        // === CLASSE PRINCIPALE DE L'APPLICATION ===
+        class MarmiplonApp {
+            constructor() {
+                this.currentRecipe = null;
+                this.searchResults = [];
+                this.init();
+            }
+
+            /**
+             * Initialise l'application
+             */
+            init() {
+                this.bindEvents();
+                this.loadCategories();
+                this.loadPopularRecipes();
+                this.updateStats();
+                this.showNotification('Bienvenue sur Marmiplon !', 'success');
+            }
+
+            /**
+             * Lie les événements aux éléments DOM
+             */
+            bindEvents() {
+                // Navigation mobile
+                const navToggle = document.getElementById('nav-toggle');
+                const navMenu = document.getElementById('nav-menu');
+                
+                navToggle?.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+
+                // Recherche
+                const searchForm = document.getElementById('search-form');
+                const searchInput = document.getElementById('search-input');
+                
+                searchForm?.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.performSearch(searchInput.value.trim());
+                });
+
+                // Recherche en temps réel
+                searchInput?.addEventListener('input', (e) => {
+                    const query = e.target.value.trim();
+                    if (query.length >= 2) {
+                        this.performSearch(query);
+                    } else if (query.length === 0) {
+                        this.hideSearchResults();
+                    }
+                });
+
+                // Modal
+                const modal = document.getElementById('recipe-modal');
+                const modalClose = document.getElementById('modal-close');
+                
+                modalClose?.addEventListener('click', () => {
+                    this.closeModal();
+                });
+
+                modal?.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        this.closeModal();
+                    }
+                });
+
+                // Escape key pour fermer la modal
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && modal.classList.contains('active')) {
+                        this.closeModal();
+                    }
+                });
+
+                // Navigation fluide
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const target = document.querySelector(anchor.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                });
+
+                // Notification
+                const notificationClose = document.getElementById('notification-close');
+                notificationClose?.addEventListener('click', () => {
+                    this.hideNotification();
+                });
+            }
+
+            /**
+             * Charge et affiche les catégories
+             */
+            loadCategories() {
+                const categoriesGrid = document.getElementById('categories-grid');
+                const loading = document.getElementById('categories-loading');
+                
+                if (!categoriesGrid) return;
+
+                // Simulation d'un délai de chargement
+                setTimeout(() => {
+                    loading?.remove();
+                    
+                    categories.forEach(category => {
+                        const recipesInCategory = this.getRecipesByCategory(category.id);
+                        const categoryCard = this.createCategoryCard(category, recipesInCategory.length);
+                        categoriesGrid.appendChild(categoryCard);
+                    });
+                }, 1000);
+            }
+
+            /**
+             * Crée une carte de catégorie
+             */
+            createCategoryCard(category, recipeCount) {
+                const card = document.createElement('div');
+                card.className = 'category-card fade-in';
+                
+                const icons = {
+                    1: '🥗', // Entrées
+                    2: '🍽️', // Plats principaux
+                    3: '🍰'  // Desserts
+                };
+
+                card.innerHTML = `
+                    <div class="category-icon">${icons[category.id] || '🍳'}</div>
+                    <h3>${category.name}</h3>
+                    <p>${category.description}</p>
+                    <span class="category-count">${recipeCount} recette${recipeCount > 1 ? 's' : ''}</span>
+                `;
+
+                card.addEventListener('click', () => {
+                    this.showCategoryRecipes(category.id);
+                });
+
+                return card;
+            }
+
+            /**
+             * Charge et affiche les recettes populaires
+             */
+            loadPopularRecipes() {
+                const recipesGrid = document.getElementById('popular-recipes');
+                const loading = document.getElementById('recipes-loading');
+                
+                if (!recipesGrid) return;
+
+                // Simulation d'un délai de chargement
+                setTimeout(() => {
+                    loading?.remove();
+                    
+                    recipes.forEach(recipe => {
+                        const recipeCard = this.createRecipeCard(recipe);
+                        recipesGrid.appendChild(recipeCard);
+                    });
+                }, 1500);
+            }
+
+            /**
+             * Crée une carte de recette
+             */
+            createRecipeCard(recipe) {
+                const card = document.createElement('div');
+                card.className = 'recipe-card slide-up';
+                
+                const comments = recipeComments.filter(c => c.recipeId === recipe.id);
+                const avgRating = comments.length > 0 
+                    ? (comments.reduce((sum, c) => sum + c.note, 0) / comments.length).toFixed(1)
+                    : 'N/A';
+
+                card.innerHTML = `
+                    <div class="recipe-image">
+                        [Image: ${recipe.title}]
+                    </div>
+                    <div class="recipe-content">
+                        <h3>${recipe.title}</h3>
+                        <p>${recipe.description}</p>
+                        <div class="recipe-meta">
+                            <div class="recipe-rating">
+                                <span class="stars">${this.generateStars(avgRating !== 'N/A' ? Math.round(avgRating) : 0)}</span>
+                                <span>${avgRating}</span>
+                            </div>
+                            <span>${comments.length} avis</span>
+                        </div>
+                    </div>
+                `;
+
+                card.addEventListener('click', () => {
+                    this.showRecipeDetail(recipe.id);
+                });
+
+                return card;
+            }
+
+            /**
+             * Génère les étoiles pour la notation
+             */
+            generateStars(rating) {
+                const fullStars = '★'.repeat(rating);
+                const emptyStars = '☆'.repeat(5 - rating);
+                return fullStars + emptyStars;
+            }
+
+            /**
+             * Récupère les recettes par catégorie
+             */
+            getRecipesByCategory(categoryId) {
+                const categoryRanges = {
+                    1: [101, 199], // Entrées
+                    2: [201, 299], // Plats principaux
+                    3: [301, 399]  // Desserts
+                };
+
+                const range = categoryRanges[categoryId];
+                if (!range) return [];
+
+                return recipes.filter(recipe => 
+                    recipe.id >= range[0] && recipe.id <= range[1]
+                );
+            }
+
+            /**
+             * Affiche les recettes d'une catégorie
+             */
+            showCategoryRecipes(categoryId) {
+                const categoryRecipes = this.getRecipesByCategory(categoryId);
+                const category = categories.find(c => c.id === categoryId);
+                
+                if (!category) return;
+
+                // Scroll vers la section des recettes et mise à jour du contenu
+                const recipesSection = document.getElementById('popular');
+                const recipesGrid = document.getElementById('popular-recipes');
+                const sectionTitle = recipesSection.querySelector('.section-title');
+
+                sectionTitle.textContent = `Recettes - ${category.name}`;
+                recipesGrid.innerHTML = '';
+
+                categoryRecipes.forEach(recipe => {
+                    const recipeCard = this.createRecipeCard(recipe);
+                    recipesGrid.appendChild(recipeCard);
+                });
+
+                recipesSection.scrollIntoView({ behavior: 'smooth' });
+                this.showNotification(`${categoryRecipes.length} recettes trouvées dans ${category.name}`, 'success');
+            }
+
+            /**
+             * Effectue une recherche
+             */
+            performSearch(query) {
+                if (!query) {
+                    this.hideSearchResults();
+                    return;
+                }
+
+                const results = this.searchRecipes(query);
+                this.displaySearchResults(results, query);
+            }
+
+            /**
+             * Recherche dans les recettes et ingrédients
+             */
+            searchRecipes(query) {
+                const queryLower = query.toLowerCase();
+                const results = [];
+
+                // Recherche dans les titres et descriptions des recettes
+                recipes.forEach(recipe => {
+                    if (recipe.title.toLowerCase().includes(queryLower) ||
+                        recipe.description.toLowerCase().includes(queryLower)) {
+                        results.push({
+                            type: 'recipe',
+                            data: recipe,
+                            matchType: 'title'
+                        });
+                    }
+                });
+
+                // Recherche dans les ingrédients
+                ingredients.forEach(ingredient => {
+                    if (ingredient.name.toLowerCase().includes(queryLower)) {
+                        const recipesWithIngredient = recipeIngredients
+                            .filter(ri => ri.ingredientId === ingredient.id)
+                            .map(ri => recipes.find(r => r.id === ri.recipeId))
+                            .filter(r => r && !results.some(result => result.data.id === r.id));
+
+                        recipesWithIngredient.forEach(recipe => {
+                            results.push({
+                                type: 'recipe',
+                                data: recipe,
+                                matchType: 'ingredient',
+                                matchedIngredient: ingredient.name
+                            });
+                        });
+                    }
+                });
+
+                return results;
+            }
+
+            /**
+             * Affiche les résultats de recherche
+             */
+            displaySearchResults(results, query) {
+                const searchResults = document.getElementById('search-results');
+                const searchResultsList = document.getElementById('search-results-list');
+                const searchResultsTitle = document.querySelector('.search-results-title');
+
+                if (!searchResults || !searchResultsList) return;
+
+                searchResultsTitle.textContent = `Résultats pour "${query}" (${results.length} trouvé${results.length > 1 ? 's' : ''})`;
+                searchResultsList.innerHTML = '';
+
+                if (results.length === 0) {
+                    searchResultsList.innerHTML = `
+                        <div style="text-align: center; padding: 2rem; color: var(--gray-medium);">
+                            <p>Aucun résultat trouvé pour "${query}"</p>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Essayez avec d'autres mots-clés</p>
+                        </div>
+                    `;
+                } else {
+                    results.forEach(result => {
+                        const resultCard = this.createSearchResultCard(result);
+                        searchResultsList.appendChild(resultCard);
+                    });
+                }
+
+                searchResults.style.display = 'block';
+            }
+
+            /**
+             * Crée une carte de résultat de recherche
+             */
+            createSearchResultCard(result) {
+                const card = document.createElement('div');
+                card.className = 'recipe-card fade-in';
+                card.style.marginBottom = 'var(--spacing-md)';
+
+                const matchInfo = result.matchType === 'ingredient' 
+                    ? `<small style="color: var(--accent-color);">Contient: ${result.matchedIngredient}</small>`
+                    : '';
+
+                card.innerHTML = `
+                    <div class="recipe-image">
+                        [Image: ${result.data.title}]
+                    </div>
+                    <div class="recipe-content">
+                        <h3>${result.data.title}</h3>
+                        <p>${result.data.description}</p>
+                        ${matchInfo}
+                    </div>
+                `;
+
+                card.addEventListener('click', () => {
+                    this.showRecipeDetail(result.data.id);
+                });
+
+                return card;
+            }
+
+            /**
+             * Masque les résultats de recherche
+             */
+            hideSearchResults() {
+                const searchResults = document.getElementById('search-results');
+                if (searchResults) {
+                    searchResults.style.display = 'none';
+                }
+            }
+
+            /**
+             * Affiche le détail d'une recette
+             */
+            showRecipeDetail(recipeId) {
+                const recipe = recipes.find(r => r.id === recipeId);
+                if (!recipe) return;
+
+                this.currentRecipe = recipe;
+                const modal = document.getElementById('recipe-modal');
+                const modalTitle = document.getElementById('modal-recipe-title');
+                const modalBody = document.getElementById('modal-body');
+
+                if (!modal || !modalTitle || !modalBody) return;
+
+                modalTitle.textContent = recipe.title;
+                modalBody.innerHTML = this.generateRecipeDetailHTML(recipe);
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+
+                // Bind events pour les commentaires
+                this.bindCommentEvents(recipeId);
+            }
+
+            /**
+             * Génère le HTML du détail de la recette
+             */
+            generateRecipeDetailHTML(recipe) {
+                const recipeIngreds = recipeIngredients.filter(ri => ri.recipeId === recipe.id);
+                const instructions = recipeInstructions.filter(inst => inst.recipeId === recipe.id)
+                    .sort((a, b) => a.step - b.step);
+                const comments = recipeComments.filter(c => c.recipeId === recipe.id);
+
+                const ingredientsHTML = recipeIngreds.map(ri => {
+                    const ingredient = ingredients.find(i => i.id === ri.ingredientId);
+                    return `
+                        <div class="ingredient-item">
+                            <span>${ingredient?.name || 'Ingrédient inconnu'}</span>
+                            <span>${ri.quantity} ${ri.unit}</span>
+                        </div>
+                    `;
+                }).join('');
+
+                const instructionsHTML = instructions.map(inst => `
+                    <div class="instruction-item">
+                        <div class="step-number">${inst.step}</div>
+                        <div>${inst.description}</div>
+                    </div>
+                `).join('');
+
+                const commentsHTML = comments.map(comment => `
+                    <div class="comment-item">
+                        <div class="comment-header">
+                            <span class="comment-author">${comment.username}</span>
+                            <span class="comment-date">${this.formatDate(comment.createdAt)}</span>
+                        </div>
+                        <div class="comment-rating">
+                            <span class="stars">${this.generateStars(comment.note)}</span>
+                            <span>${comment.note}/5</span>
+                        </div>
+                        <div class="comment-content">${comment.content}</div>
+                    </div>
+                `).join('');
+
+                return `
+                    <div class="recipe-detail-image">
+                        [Image détaillée: ${recipe.title}]
+                    </div>
+                    
+                    <div class="recipe-description">
+                        ${recipe.description}
+                    </div>
+
+                    <div class="recipe-section">
+                        <h3>Ingrédients</h3>
+                        <div class="ingredients-list">
+                            ${ingredientsHTML}
+                        </div>
+                    </div>
+
+                    <div class="recipe-section">
+                        <h3>Instructions</h3>
+                        <div class="instructions-list">
+                            ${instructionsHTML}
+                        </div>
+                    </div>
+
+                    <div class="comments-section">
+                        <h3>Commentaires et avis (${comments.length})</h3>
+                        
+                        <div class="comment-form">
+                            <h4>Laisser un commentaire</h4>
+                            <form id="comment-form">
+                                <div class="form-group">
+                                    <label for="comment-username">Nom d'utilisateur</label>
+                                    <input type="text" id="comment-username" name="username" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="comment-rating">Note</label>
+                                    <select id="comment-rating" name="rating" required>
+                                        <option value="">Choisir une note</option>
+                                        <option value="5">★★★★★ (5/5)</option>
+                                        <option value="4">★★★★☆ (4/5)</option>
+                                        <option value="3">★★★☆☆ (3/5)</option>
+                                        <option value="2">★★☆☆☆ (2/5)</option>
+                                        <option value="1">★☆☆☆☆ (1/5)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="comment-content">Commentaire</label>
+                                    <textarea id="comment-content" name="content" placeholder="Partagez votre expérience avec cette recette..." required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary">Publier le commentaire</button>
+                            </form>
+                        </div>
+
+                        <div class="comments-list">
+                            ${commentsHTML}
+                        </div>
+                    </div>
+                `;
+            }
+
+            /**
+             * Lie les événements pour les commentaires
+             */
+            bindCommentEvents(recipeId) {
+                const commentForm = document.getElementById('comment-form');
+                if (!commentForm) return;
+
+                commentForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.submitComment(recipeId, new FormData(commentForm));
+                });
+            }
+
+            /**
+             * Soumet un nouveau commentaire
+             */
+            submitComment(recipeId, formData) {
+                const username = formData.get('username');
+                const rating = parseInt(formData.get('rating'));
+                const content = formData.get('content');
+
+                // Validation basique
+                if (!username || !rating || !content) {
+                    this.showNotification('Veuillez remplir tous les champs', 'error');
+                    return;
+                }
+
+                // Créer un nouveau commentaire
+                const newComment = {
+                    id: recipeComments.length + 1,
+                    username: username.trim(),
+                    content: content.trim(),
+                    note: rating,
+                    createdAt: new Date(),
+                    recipeId: recipeId
+                };
+
+                // Ajouter le commentaire aux données
+                recipeComments.push(newComment);
+
+                // Recharger les détails de la recette
+                this.showRecipeDetail(recipeId);
+                
+                this.showNotification('Commentaire ajouté avec succès !', 'success');
+            }
+
+            /**
+             * Formate une date
+             */
+            formatDate(date) {
+                const options = { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                };
+                return new Intl.DateTimeFormat('fr-FR', options).format(new Date(date));
+            }
+
+            /**
+             * Ferme la modal
+             */
+            closeModal() {
+                const modal = document.getElementById('recipe-modal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                    this.currentRecipe = null;
+                }
+            }
+
+            /**
+             * Met à jour les statistiques du footer
+             */
+            updateStats() {
+                const totalRecipesEl = document.getElementById('total-recipes');
+                const totalCategoriesEl = document.getElementById('total-categories');
+
+                if (totalRecipesEl) {
+                    totalRecipesEl.textContent = recipes.length;
+                }
+                
+                if (totalCategoriesEl) {
+                    totalCategoriesEl.textContent = categories.length;
+                }
+            }
+
+            /**
+             * Affiche une notification
+             */
+            showNotification(message, type = 'success') {
+                const notification = document.getElementById('notification');
+                const notificationMessage = document.getElementById('notification-message');
+
+                if (!notification || !notificationMessage) return;
+
+                notificationMessage.textContent = message;
+                notification.className = `notification ${type}`;
+                notification.style.display = 'flex';
+
+                // Auto-hide après 5 secondes
+                setTimeout(() => {
+                    this.hideNotification();
+                }, 5000);
+            }
+
+            /**
+             * Masque la notification
+             */
+            hideNotification() {
+                const notification = document.getElementById('notification');
+                if (notification) {
+                    notification.style.display = 'none';
+                }
+            }
+
+            /**
+             * Gestion de la navigation active
+             */
+            updateActiveNavigation() {
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('.nav-link');
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.getAttribute('id');
+                            
+                            // Retirer la classe active de tous les liens
+                            navLinks.forEach(link => link.classList.remove('active'));
+                            
+                            // Ajouter la classe active au lien correspondant
+                            const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                            if (activeLink) {
+                                activeLink.classList.add('active');
+                            }
+                        }
+                    });
+                }, {
+                    rootMargin: '-50% 0px -50% 0px'
+                });
+
+                sections.forEach(section => {
+                    observer.observe(section);
+                });
+            }
+        }
+
+        // === UTILITAIRES GLOBAUX ===
+
+        /**
+         * Classe utilitaire pour la gestion des animations
+         */
+        class AnimationUtils {
+            static fadeIn(element, duration = 300) {
+                element.style.opacity = '0';
+                element.style.display = 'block';
+                
+                let start = null;
+                const animate = (timestamp) => {
+                    if (!start) start = timestamp;
+                    const progress = timestamp - start;
+                    
+                    element.style.opacity = Math.min(progress / duration, 1);
+                    
+                    if (progress < duration) {
+                        requestAnimationFrame(animate);
+                    }
+                };
+                
+                requestAnimationFrame(animate);
+            }
+
+            static slideDown(element, duration = 300) {
+                element.style.height = '0px';
+                element.style.overflow = 'hidden';
+                element.style.display = 'block';
+                
+                const fullHeight = element.scrollHeight;
+                let start = null;
+                
+                const animate = (timestamp) => {
+                    if (!start) start = timestamp;
+                    const progress = timestamp - start;
+                    
+                    element.style.height = Math.min((progress / duration) * fullHeight, fullHeight) + 'px';
+                    
+                    if (progress < duration) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        element.style.height = '';
+                        element.style.overflow = '';
+                    }
+                };
+                
+                requestAnimationFrame(animate);
+            }
+        }
+
+        /**
+         * Classe pour la gestion des données locales
+         */
+        class DataManager {
+            static saveToStorage(key, data) {
+                try {
+                    // Note: localStorage n'est pas disponible dans les artifacts Claude
+                    // Cette méthode est prête pour une implémentation future
+                    console.log(`Sauvegarde ${key}:`, data);
+                } catch (error) {
+                    console.error('Erreur lors de la sauvegarde:', error);
+                }
+            }
+
+            static loadFromStorage(key, defaultValue = null) {
+                try {
+                    // Note: localStorage n'est pas disponible dans les artifacts Claude
+                    // Cette méthode retourne la valeur par défaut
+                    console.log(`Chargement ${key}, valeur par défaut:`, defaultValue);
+                    return defaultValue;
+                } catch (error) {
+                    console.error('Erreur lors du chargement:', error);
+                    return defaultValue;
+                }
+            }
+
+            static exportData() {
+                return {
+                    categories,
+                    ingredients,
+                    recipeIngredients,
+                    recipeInstructions,
+                    recipes,
+                    recipeComments
+                };
+            }
+        }
+
+        /**
+         * Classe pour la validation des formulaires
+         */
+        class FormValidator {
+            static validateComment(formData) {
+                const errors = [];
+                
+                const username = formData.get('username')?.trim();
+                const rating = formData.get('rating');
+                const content = formData.get('content')?.trim();
+
+                if (!username || username.length < 2) {
+                    errors.push('Le nom d\'utilisateur doit contenir au moins 2 caractères');
+                }
+
+                if (!rating || rating < 1 || rating > 5) {
+                    errors.push('Veuillez sélectionner une note entre 1 et 5');
+                }
+
+                if (!content || content.length < 10) {
+                    errors.push('Le commentaire doit contenir au moins 10 caractères');
+                }
+
+                return {
+                    isValid: errors.length === 0,
+                    errors
+                };
+            }
+
+            static sanitizeInput(input) {
+                return input
+                    .replace(/[<>]/g, '') // Supprime les balises HTML de base
+                    .trim();
+            }
+        }
+
+        // === INITIALISATION DE L'APPLICATION ===
+
+        // Attendre que le DOM soit chargé
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialiser l'application principale
+            const app = new MarmiplonApp();
+            
+            // Activer la navigation active
+            app.updateActiveNavigation();
+            
+            // Log pour le développement
+            console.log('🍳 Marmiplon Application initialisée avec succès!');
+            console.log('📊 Données chargées:', {
+                categories: categories.length,
+                recipes: recipes.length,
+                ingredients: ingredients.length,
+                comments: recipeComments.length
+            });
+            
+            // Exposer l'app pour le débogage (développement uniquement)
+            if (typeof window !== 'undefined') {
+                window.MarmiplonApp = app;
+                window.DataManager = DataManager;
+            }
+        });
+
+        // === GESTION DES ERREURS GLOBALES ===
+        window.addEventListener('error', (e) => {
+            console.error('Erreur JavaScript:', e.error);
+            
+            // Afficher une notification d'erreur à l'utilisateur
+            const app = window.MarmiplonApp;
+            if (app && typeof app.showNotification === 'function') {
+                app.showNotification('Une erreur inattendue s\'est produite', 'error');
+            }
+        });
+
+        // === SERVICE WORKER (pour les fonctionnalités PWA futures) ===
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Note: Le service worker pourrait être ajouté dans une version future
+                console.log('🔧 Service Worker support détecté');
+            });
+        }
+    </script>
+</body>
+</html>
