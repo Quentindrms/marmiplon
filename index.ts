@@ -1,12 +1,13 @@
 import { logMiddleware } from "./middlewares";
 import Express from "express";
 import router from "./routes/";
-
+import path from 'node:path'; 
 
 
 const app = Express();
 const Port = 3000;
 
+app.use(Express.static(path.join(__dirname, 'public')));
 
 app.use(Express.json());
 app.use(logMiddleware);
