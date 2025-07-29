@@ -1,4 +1,4 @@
-import { Request, Response } from "express"; "express"
+import { Request, Response } from "express";
 
 export abstract class Controller{
     protected request: Request;
