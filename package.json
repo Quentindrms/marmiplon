@@ -4,7 +4,9 @@
   "description": "Application de recette de cuisines",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+   "start": "tsx index.ts",
+    "dev": "tsx watch index.ts"
   },
   "repository": {
     "type": "git",
