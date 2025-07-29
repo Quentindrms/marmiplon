@@ -1,6 +1,6 @@
 import { logMiddleware } from "./middlewares";
 import Express from "express";
-import router from "./routes/global";
+import router from "./routes/";
 
 
 
