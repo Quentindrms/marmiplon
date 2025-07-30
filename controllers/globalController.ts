@@ -10,6 +10,10 @@ export class GlobalController { 
     }
 
     public homepage(){
-        this.response.render('pages/index')
+        this.response.render('pages/index'); 
+    }
+
+    public categories(){
+        this.response.render('pages/categories'); 
     }
 }
