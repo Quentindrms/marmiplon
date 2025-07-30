@@ -12,4 +12,13 @@ export class GlobalController { 
     public homepage(){
         this.response.render('pages/index')
     }
+
+
+    public browseCategorie() {
+        this.response.send('pages/categorie');
+    }
+
+    public browseRecette() {
+        this.response.send('pages/recettes');
+    }
 }
