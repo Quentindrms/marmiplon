@@ -4,6 +4,6 @@ import globalRouter from "./globalRouter";
 // Initialiastion du router Express
 const router = Router();
 
-router.use(globalRouter);
+router.use(globalRouter), '/';
 
 export default router;
