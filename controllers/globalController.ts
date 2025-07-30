@@ -16,4 +16,13 @@ export class GlobalController { 
     public categories(){
         this.response.render('pages/categories'); 
     }
+
+
+    public browseCategorie() {
+        this.response.send('pages/categorie');
+    }
+
+    public browseRecette() {
+        this.response.send('pages/recettes');
+    }
 }
