@@ -1,7 +1,6 @@
 import globalRouter from "./globalRouter";
 import express, { Router } from "express";
 
-
 const PORT = 3004;
 
 //Initialization du router express
@@ -21,6 +20,5 @@ router.get('/categorie', (request, response) => {
 router.get('/recherche', (request, response) => {
   response.send("Bienvenue sur recherche !");
   });
-
 
 export default router;
