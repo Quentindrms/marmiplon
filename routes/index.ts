@@ -1,11 +1,13 @@
 import globalRouter from "./globalRouter";
 import express, { Router } from "express";
 
+const router = Router();
 const PORT = 3004;
+router.use(globalRouter);
 
 //Initialization du router express
 
-const router = express();
+
 
 //déclaration de la route home
 
