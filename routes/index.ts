@@ -1,9 +1,12 @@
 import globalRouter from "./globalRouter";
 import express, { Router } from "express";
+import recipeDetails from "./recipeDetails";
+
 
 const router = Router();
 const PORT = 3004;
 router.use(globalRouter);
+router.use(recipeDetails)
 
 //Initialization du router express
 
