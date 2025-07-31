@@ -12,9 +12,15 @@ app.use(Express.static(path.join(__dirname, 'public')));
 app.use(Express.json());
 app.use(logMiddleware);
 
-/** Mise en place du moteur de rendu */
-app.set('view engine', 'ejs');
 app.use("/", router)
+/** Mise en place du moteur de rendu */
+app.set("views", "./views/pages");
+app.set('view engine', 'ejs');
+
+
+app.get("/recipe", (req, res) => {
+  res.render("recipePage");
+});
 
 app.listen(Port, () => {
   console.log(`Server is running on http://localhost:${Port}`);

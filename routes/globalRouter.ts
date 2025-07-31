@@ -1,7 +1,6 @@
 import { Router } from "express";
-import index from "./index";
 import { GlobalController } from "../controllers/globalController";
-import { request } from "node:http";
+
 
 const globalRouter = Router();
 
