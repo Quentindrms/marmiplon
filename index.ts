@@ -13,12 +13,17 @@ app.use(Express.json());
 
 app.use(logMiddleware);
 
+app.use("/", router)
 /** Mise en place du moteur de rendu */
+app.set("views", "./views/pages");
 app.set('view engine', 'ejs');
 
 //declaration à l'app express
 app.use("/", router)
 
+app.get("/recipe", (req, res) => {
+  res.render("recipePage");
+});
 
 //demarrer le serveur express
 
