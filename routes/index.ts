@@ -8,7 +8,6 @@ router.use(globalRouter);
 //Initialization du router express
 
 
-
 //déclaration de la route home
 
 router.get('/', (request, response) => {
