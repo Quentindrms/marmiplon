@@ -137,7 +137,7 @@
         .header {
             background: var(--white);
             box-shadow: var(--shadow-sm);
-            position: fixed;
+            /* position: fixed; */
             top: 0;
             left: 0;
             right: 0;
@@ -347,6 +347,10 @@
             margin-top: var(--spacing-2xl);
         }
 
+        .categories-grid a {
+            text-decoration: none;
+        }
+
         .category-card {
             background: var(--white);
             padding: var(--spacing-xl);
@@ -398,6 +402,10 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: var(--spacing-xl);
             margin-top: var(--spacing-2xl);
+        }
+
+        .recipes-grid a {
+            text-decoration: none;
         }
 
         .recipe-card {
@@ -803,6 +811,11 @@
             font-size: var(--font-size-lg);
             cursor: pointer;
             color: var(--gray-medium);
+        }
+
+        .error_title{
+            padding: 10rem;
+            text-align: center;
         }
 
         /* === RESPONSIVE === */
