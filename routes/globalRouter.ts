@@ -14,4 +14,14 @@ globalRouter.get('/categories', (request, response) => {
       globalController.categories();
 })
 
+globalRouter.get('/404', (request, response) => {
+      const globalController = new GlobalController(request, response);
+      globalController.error_404();
+})
+
+globalRouter.get('/418', (request, response) => {
+      const globalController = new GlobalController(request, response);
+      globalController.error_418();
+})
+
 export default globalRouter;
