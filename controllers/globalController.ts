@@ -10,26 +10,26 @@ export class GlobalController { 
     }
 
     public homepage(){
-        this.response.render('pages/index'); 
+        this.response.render('./index'); 
     }
 
     public categories(){
-        this.response.render('pages/categories'); 
+        this.response.render('./categories'); 
     }
 
     public browseCategorie() {
-        this.response.send('pages/categorie');
+        this.response.send('./categorie');
     }
 
     public browseRecette() {
-        this.response.send('pages/recettes');
+        this.response.send('./recettes');
     }
 
     public error_404(){
-        this.response.render('./errors/404');
+        this.response.render('../errors/404');
     }
 
     public error_418(){
-        this.response.render('./errors/418'); 
+        this.response.render('../errors/418'); 
     }
 }
