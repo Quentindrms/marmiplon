@@ -1,5 +1,6 @@
 import globalRouter from "./globalRouter";
 import express, { Router } from "express";
+import categoryRouter from "./categoryRouter";
 import recipeDetails from "./recipeDetails";
 
 
@@ -17,12 +18,10 @@ router.get('/', (request, response) => {
   response.send("Bienvenue sur Marmiplon !");
   });
 
-router.get('/categorie', (request, response) => {
-  response.send("Bienvenue sur categorie !");
-  });
-
 router.get('/recherche', (request, response) => {
   response.send("Bienvenue sur recherche !");
   });
+
+router.use(categoryRouter);
 
 export default router;
