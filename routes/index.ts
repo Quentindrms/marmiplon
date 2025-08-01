@@ -5,7 +5,7 @@ import recipeDetails from "./recipeDetails";
 
 
 const router = Router();
-const PORT = 3004;
+
 router.use(globalRouter);
 router.use(recipeDetails)
 
