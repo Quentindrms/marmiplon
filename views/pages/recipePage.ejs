@@ -32,7 +32,7 @@
       <strong><%= chat.username %></strong> –
       <em><%= chat.createdAt.toLocaleDateString() %></em>
       <p><%= chat.content %></p>
-      <p>Note : <%= chat.note ?? "Non noté" %></p>
+      <p>Note : <%= chat.note ? chat.note : "Non noté" %></p>
     </div>
     <% }) %> <% } %> <% } else { %>
     <h1><%= message || "Recette introuvable" %></h1>

@@ -37,17 +37,17 @@ console.log(recipe);
             };
         });
 
-//Instructions (étapes triées)
+//instructions (étapes triées)
     const instructions = recipeInstructions
         .filter(instruction => instruction.recipeId === recipe.id)
         .sort((a, b) => a.step - b.step);
 
-    //  Commentaires (triés croissant)
+//  commentaires (triés croissant)
     const comments = recipeComments
         .filter(comment => comment.recipeId === recipe.id)
         .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 
-    //  recup data
+//  recup data
     this.response.render("recipePage", {
         recipe,
         ingredients: recipeIngs,
