@@ -1,5 +1,5 @@
 import { Request,Response } from "express";
-import {ingredients} from "./../src/data/data";
+import { recipes, recipeIngredients, recipeInstructions, recipeComments, ingredients} from "./../src/data/data";
 
 
 export class RecipeController{
@@ -13,24 +13,45 @@ constructor(request: Request, response:Response){
 }
 
 
-public readrecipe (){
-ingredients
+public readrecipe() {
+    const requestedId = parseInt(this.request.params.id);
+console.log(requestedId);
+const recipe = recipes.find(recipe => recipe.id === requestedId);
+console.log(recipe);
 
- const requestedId = this.request.params.id;
-
- const ingredientsList = ingredients.find((ingredien) => {
-      return ingredien.id == parseInt(requestedId);
-
-   
+    if (!recipe) {
+    return this.response.status(404).render("recipePage", {
+        message: "Recette introuvable"
     });
-    if (!ingredientsList) {
-        this.response.render("pages/book.ejs"), {
+}
 
-        }
-    }
+    // On récupère les ingrédients liés à cette recette
+    const recipeIngs = recipeIngredients
+        .filter(recipeIngredient => recipeIngredient.recipeId === recipe.id)
+        .map(recipeIngredient => {
+            const ingredient = ingredients.find(i => i.id === recipeIngredient.ingredientId);
+            return {
+                name: ingredient?.name,
+                quantity: recipeIngredient.quantity,
+                unit: recipeIngredient.unit
+            };
+        });
+
+//instructions (étapes triées)
+    const instructions = recipeInstructions
+        .filter(instruction => instruction.recipeId === recipe.id)
+        .sort((a, b) => a.step - b.step);
+
+//  commentaires (triés croissant)
+    const comments = recipeComments
+        .filter(comment => comment.recipeId === recipe.id)
+        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+
+//  recup data
+    this.response.render("recipePage", {
+        recipe,
+        ingredients: recipeIngs,
+        instructions,
+        comments
+    });
 }}
-
-// export const ingredients
-// recipeIngredients
-// recipeInstructions
-// recipes

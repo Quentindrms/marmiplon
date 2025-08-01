@@ -3,9 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>recipe page</title>
+    <title>Recipe Page</title>
   </head>
   <body>
-    <h1>Recette</h1>
+    <% if (recipe) { %>
+    <h1><%= recipe.title %></h1>
+    <p><%= recipe.description %></p>
+
+    <h2>Ingrédients</h2>
+    <ul>
+      <% ingredients.forEach(ingred => { %>
+      <li><%= ingred.quantity %> <%= ingred.unit %> de <%= ingred.name %></li>
+      <% }) %>
+    </ul>
+
+    <h2>Préparation</h2>
+    <ol>
+      <% instructions.forEach(step => { %>
+      <li><%= step.description %></li>
+      <% }) %>
+    </ol>
+
+    <h2>Commentaires</h2>
+    <% if (comments.length === 0) { %>
+    <p>Aucun commentaire pour l’instant.</p>
+    <% } else { %> <% comments.forEach(chat => { %>
+    <div>
+      <strong><%= chat.username %></strong> –
+      <em><%= chat.createdAt.toLocaleDateString() %></em>
+      <p><%= chat.content %></p>
+      <p>Note : <%= chat.note ? chat.note : "Non noté" %></p>
+    </div>
+    <% }) %> <% } %> <% } else { %>
+    <h1><%= message || "Recette introuvable" %></h1>
+    <% } %>
   </body>
 </html>
