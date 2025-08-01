@@ -1,41 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recipe Page</title>
-  </head>
-  <body>
-    <% if (recipe) { %>
-    <h1><%= recipe.title %></h1>
-    <p><%= recipe.description %></p>
+<%- include('../partials/head', {title:'Accueil'}) %> <%- include
+('../partials/header') %> <% if (recipe) { %>
 
-    <h2>Ingrédients</h2>
-    <ul>
-      <% ingredients.forEach(ingred => { %>
-      <li><%= ingred.quantity %> <%= ingred.unit %> de <%= ingred.name %></li>
-      <% }) %>
-    </ul>
+<section class="hero" id="home">
+  <main class="main">
+    <div class="hero-actions">
+      <div class="container">
+        <div class="modal-header">
+          <div class="modal-content">
+            <h1 class="hero-title"><%= recipe.title %></h1>
+            <p><%= recipe.description %></p>
+          </div>
+        </div>
 
-    <h2>Préparation</h2>
-    <ol>
-      <% instructions.forEach(step => { %>
-      <li><%= step.description %></li>
-      <% }) %>
-    </ol>
+        <div class="modal-header">
+          <div class="modal-content">
+            <h2 class="section-title">Ingrédients</h2>
+            <div class="modal-body" id="modal-body">
+              <ul class="recipes-grid">
+                <% ingredients.forEach(ingred => { %>
+                <li>
+                  <%= ingred.quantity %> <%= ingred.unit %> de <%= ingred.name
+                  %>
+                </li>
+                <% }) %>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-    <h2>Commentaires</h2>
-    <% if (comments.length === 0) { %>
-    <p>Aucun commentaire pour l’instant.</p>
-    <% } else { %> <% comments.forEach(chat => { %>
-    <div>
-      <strong><%= chat.username %></strong> –
-      <em><%= chat.createdAt.toLocaleDateString() %></em>
-      <p><%= chat.content %></p>
-      <p>Note : <%= chat.note ? chat.note : "Non noté" %></p>
+        <div class="modal-header">
+          <div class="modal-content">
+            <h2 class="section-title">Préparation</h2>
+            <div class="modal-body" id="modal-body">
+              <ol class="recipes-grid">
+                <% instructions.forEach(step => { %>
+                <li><%= step.description %></li>
+                <% }) %>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-header">
+          <div class="modal-content">
+            <h2 class="section-title">Commentaires</h2>
+            <div class="modal-body" id="modal-body">
+              <% if (comments.length === 0) { %>
+              <p>Aucun commentaire pour l’instant.</p>
+              <% } else { %> <% comments.forEach(chat => { %>
+              <div>
+                <strong><%= chat.username %></strong> –
+                <em><%= chat.createdAt.toLocaleDateString() %></em>
+                <p><%= chat.content %></p>
+                <p>Note : <%= chat.note ? chat.note : "Non noté" %></p>
+              </div>
+              <% }) %> <% } %> <% } else { %>
+              <h1><%= message || "Recette introuvable" %></h1>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <% }) %> <% } %> <% } else { %>
-    <h1><%= message || "Recette introuvable" %></h1>
-    <% } %>
-  </body>
-</html>
+  </main>
+</section>
+<%- include("../partials/footer") %>

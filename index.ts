@@ -22,20 +22,8 @@ app.set('view engine', 'ejs');
 
 app.use("/", router);
 
-app.listen(Port, () => {
-  console.log(`Server is running on http://localhost:${Port}`);
-});
-
-//declaration à l'app express
-app.use("/", router)
-
-app.get("/recipe", (req, res) => {
-  res.render("recipePage");
-});
-
-//demarrer le serveur express
-
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
 
