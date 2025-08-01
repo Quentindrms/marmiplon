@@ -20,12 +20,6 @@ app.use(logMiddleware);
 app.set("views", path.join(__dirname, "views", "pages"));
 app.set('view engine', 'ejs');
 
-app.use("/", router);
-
-app.listen(Port, () => {
-  console.log(`Server is running on http://localhost:${Port}`);
-});
-
 //declaration à l'app express
 app.use("/", router)
 
