@@ -9,11 +9,6 @@ globalRouter.get("/", (request, response) => {
    globalController.homepage();
 })
 
-globalRouter.get('/categories', (request, response) => {
-      const globalController = new GlobalController(request, response);
-      globalController.categories();
-})
-
 globalRouter.get('/404', (request, response) => {
       const globalController = new GlobalController(request, response);
       globalController.error_404();

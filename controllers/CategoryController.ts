@@ -15,7 +15,7 @@ export class CategoryController extends Controller{
             listRecipes.push(recipe);
         });
 
-        this.response.render("pages/category", { categories: categories, category: undefined, recipes: listRecipes });
+        this.response.render("category", { categories: categories, category: undefined, recipes: listRecipes });
     }
 
     public getCategoryById(){
@@ -23,7 +23,7 @@ export class CategoryController extends Controller{
 
         const category = this.keyWords.indexOf(requestCategory) + 1;
         if(category === 0){
-            this.response.render("errors/404");
+            this.response.render("../errors/404");
         }
         else{
             const listRecipes: Array<Recipe> = [];
@@ -35,7 +35,7 @@ export class CategoryController extends Controller{
                 }
             });
 
-            this.response.render("pages/category", { categories: categories, category: categories[category-1], recipes: listRecipes });
+            this.response.render("category", { categories: categories, category: categories[category-1], recipes: listRecipes });
         }
     }
 }
