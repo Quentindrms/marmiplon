@@ -14,9 +14,7 @@ router.use(recipeDetails)
 
 //déclaration de la route home
 
-router.get('/', (request, response) => {
-  response.send("Bienvenue sur Marmiplon !");
-  });
+router.use(globalRouter);
 
 router.get('/recherche', (request, response) => {
   response.send("Bienvenue sur recherche !");
