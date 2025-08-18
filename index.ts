@@ -20,16 +20,10 @@ app.use(logMiddleware);
 app.set("views", path.join(__dirname, "views", "pages"));
 app.set('view engine', 'ejs');
 
-//declaration à l'app express
-app.use("/", router)
-
-app.get("/recipe", (req, res) => {
-  res.render("recipePage");
-});
-
-//demarrer le serveur express
+app.use("/", router);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
 
