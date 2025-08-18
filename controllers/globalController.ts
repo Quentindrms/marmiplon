@@ -10,8 +10,7 @@ export class GlobalController { 
     }
 
     public homepage(){
-<<<<<<< HEAD
-        this.response.render('./index'); 
+        this.response.render('./homepage'); 
     }
 
     public categories(){
@@ -32,16 +31,5 @@ export class GlobalController { 
 
     public error_418(){
         this.response.render('../errors/418'); 
-=======
-        this.response.render('pages/homepage')
-    }
-
-    public browseCategorie() {
-        this.response.render('pages/categorie');
-    }
-
-    public browseRecette() {
-        this.response.render('pages/recettes');
->>>>>>> ed56cd8 (homepage.ejs)
     }
 }
