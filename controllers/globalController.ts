@@ -1,5 +1,5 @@
 import { Request, Response} from "express";
-
+import { recipes, recipeIngredients, recipeInstructions, recipeComments, ingredients} from "./../src/data/data";
 export class GlobalController { 
     protected request : Request; 
     protected response: Response;
@@ -11,7 +11,12 @@ export class GlobalController { 
 
     public homepage(){
         this.response.render('./homepage'); 
-    }
+         recipes
+        recipeIngredients
+        recipeInstructions
+        recipeComments
+ingredients
+}
 
     public categories(){
         this.response.render('./categories'); 
@@ -32,4 +37,8 @@ export class GlobalController { 
     public error_418(){
         this.response.render('../errors/418'); 
     }
+
+
 }
+
+
