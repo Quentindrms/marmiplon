@@ -1,5 +1,5 @@
 import { Request,Response } from "express";
-import { recipes, recipeIngredients, recipeInstructions, recipeComments, ingredients} from "./../src/data/data";
+import { recipes, recipeIngredients, recipeInstructions, recipeComments, ingredients, categories} from "./../src/data/data";
 
 
 export class RecipeController{
@@ -54,4 +54,56 @@ console.log(recipe);
         instructions,
         comments
     });
-}}
+}
+
+    public addRecipePage(){
+        this.response.render("addRecipePage", {categories, ingredients});
+    }
+
+    public addRecipe(){
+        const result = this.request.body;
+
+        this.insertIntoData(result);
+
+        this.response.redirect("/categories");
+    }
+
+    private insertIntoData(result){
+        const catId: number | undefined = categories.find((cat) => {
+            return cat.name == result.recipeCategory;
+        })?.id;
+
+        let recipeId: number | undefined = recipes.reverse().find((recipe) => {
+            return Math.round(recipe.id / 100) === catId;
+        })?.id;
+        
+        if(recipeId){
+            recipeId++;
+            recipes.push({ 
+                id : recipeId,
+                title: result.recipeTitle,
+                description: result.recipeDescription 
+            });
+
+            console.log(recipes.find((recipe) => {
+                return recipe.id === recipeId;
+            }));
+
+            let curStep = 1;
+            let curId = recipeInstructions[recipeInstructions.length -1].id + 1;
+            
+            result.recipeStep.forEach(step => {
+                recipeInstructions.push({
+                    id: curId,
+                    description: step,
+                    step: curStep,
+                    recipeId: recipeId as number
+                });
+                curStep++;
+                curId++;
+            });
+
+            console.log(recipeInstructions);
+        }
+    }
+}
