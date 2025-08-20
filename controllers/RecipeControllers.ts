@@ -143,7 +143,8 @@ const recipe = recipes.find(recipe => recipe.id === requestedId);
             recipes.push({ 
                 id : recipeId,
                 title: result.recipeTitle,
-                description: result.recipeDescription 
+                description: result.recipeDescription,
+                image: `https://placehold.co/600x400/orange/white?text=${result.recipeTitle.replaceAll(" ", "+")}`
             });
 
             let curStep: number = 1;
