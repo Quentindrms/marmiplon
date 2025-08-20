@@ -15,6 +15,8 @@ app.use(Express.static(path.join(__dirname, 'public')));
 app.use(Express.json());
 
 app.use(logMiddleware);
+app.use(Express.urlencoded({ extended: true }));
+
 
 app.set("views", path.join(__dirname, "views", "pages"));
 app.set('view engine', 'ejs');
