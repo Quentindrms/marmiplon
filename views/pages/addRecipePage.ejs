@@ -1,0 +1,121 @@
+<%- include("../partials/head", {title: "Ajout de recettes"}) %>
+<%- include("../partials/header") %>
+
+<main class="main">
+    <section class="popular-section container">
+        <h1>Ajouter une recette</h1>
+        <form method="post" action="/recipe/add">
+            <div class="recipe-form-input">
+                <label for="recipe-title">Titre de la recette</label>
+                <input type="text" id="recipe-title" name="recipeTitle">
+            </div>
+            <div class="recipe-form-input">
+                <label for="recipe-desc">Description</label>
+                <textarea type="text" id="recipe-desc" name="recipeDescription"></textarea>
+            </div>
+            <div class="recipe-form-input">
+                <label for="recipe-category">Catégories</label>
+                <select name="recipeCategory" id="recipe-category">
+                    <% categories.forEach((category) => { %>
+                        <option value="<%= category.name %>"><%= category.name %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="recipe-form-input">
+                <label>Ingrédients / Quantité</label>
+                <div id="recipe-ingredients">
+                    <select name="recipeIngredientsName" id="recipe-ingredients-name">
+                        <% ingredients.forEach((ingredient) => { %>
+                            <option value="<%= ingredient.name %>"><%= ingredient.name %></option>
+                        <% }) %>
+                    </select>
+                    <input type="text" name="recipeIngredientsQuantity">
+                    <select name="recipeIngredientsUnit" id="recipe-ingredients-unit">
+                        <option value="unités">unités</option>
+                        <option value="grammes">grammes</option>
+                        <option value="pincées">pincées</option>
+                        <option value="gousses">gousses</option>
+                        <option value="millilitres">millilitres</option>
+                        <option value="tranche">tranche</option>
+                        <option value="feuilles">feuilles</option>
+                        <option value="cuillères à soupe">cuillères à soupe</option>
+                    </select>
+                </div>
+                <button type="button" id="add-ingredient">+</button>
+            </div>
+            <div class="recipe-form-input">
+                <label for="recipe-step">Étapes</label>
+                <textarea id="recipe-step" name="recipeStep"></textarea>
+                <button type="button" id="add-step">+</button>
+            </div>
+            <button type="submit">Valider</button>
+        </form>
+    </section>
+</main>
+<script>
+    const addIngredient = document.getElementById("add-ingredient");
+    const addStep = document.getElementById("add-step");
+
+    function createDeleteLineButton() {
+        const buttonDelete = document.createElement("button");
+        buttonDelete.type = "button";
+        buttonDelete.innerText = "-";
+
+        buttonDelete.addEventListener("click", (event) => {
+            if (event.target instanceof HTMLElement){
+                event.target.parentElement?.remove();
+            }
+        });
+
+        return buttonDelete;
+    }
+
+    function addIngredientLine(){
+        if(addIngredient){
+            const divLine = document.createElement("div");
+            const nodeIngredientName = document.getElementById("recipe-ingredients-name");
+            const nodeIngredientUnit = document.getElementById("recipe-ingredients-unit");
+
+            if(nodeIngredientName && nodeIngredientUnit){
+                const newNodeIngredientName = nodeIngredientName.cloneNode(true);
+
+                const input = document.createElement("input");
+                input.name = "recipeIngredientsQuantity";
+                input.type = "text";
+
+                const newNodeIngredientUnit = nodeIngredientUnit.cloneNode(true);
+
+                const buttonDelete = createDeleteLineButton();
+
+                divLine.append(newNodeIngredientName, input, newNodeIngredientUnit, buttonDelete);
+            }
+
+            
+            addIngredient.before(divLine);
+        }
+    }
+
+    if(addIngredient){
+        addIngredient.addEventListener("click", addIngredientLine);
+    }
+
+    function addStepLine(){
+        if(addStep){
+            const divLine = document.createElement("div");
+
+            const textArea = document.createElement("textarea");
+            textArea.name = "recipeStep";
+
+            const buttonDelete = createDeleteLineButton();
+
+            divLine.append(textArea, buttonDelete);
+            addStep.before(divLine);
+        }
+    }
+
+    if(addStep){
+        addStep.addEventListener("click", addStepLine);
+    }
+</script>
+
+<%- include("../partials/footer") %>
