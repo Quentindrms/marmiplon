@@ -353,12 +353,17 @@
 
         .category-card {
             background: var(--white);
-            padding: var(--spacing-xl);
+            padding: var(--spacing-xs);
             border-radius: var(--border-radius-xl);
             box-shadow: var(--shadow-md);
             text-align: center;
             transition: all var(--transition-normal);
             cursor: pointer;
+        }
+
+        .category-img{
+            min-width: 300px;
+            padding: 1rem;
         }
 
         .category-card:hover {
