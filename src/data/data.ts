@@ -278,4 +278,3 @@ export const recipeComments: RecipeComment[] = [
 		recipeId: 302,
 	},
 ];
-// recipeComments,categories,ingredients,recipeIngredients,recipes,recipeInstructions,
