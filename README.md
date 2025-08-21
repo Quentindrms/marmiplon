@@ -26,7 +26,7 @@ Installation des dépendances indispensables à l'exécution du projet
 
 ``` Shell
 npm install
-```,
+```
 
 Lancement de l'environnement de développement. Le watcher relance le serveur à chaque modification du fichier 
 
