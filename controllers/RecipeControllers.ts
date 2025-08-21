@@ -15,13 +15,13 @@ constructor(request: Request, response:Response){
 
 public readrecipe() {
     const requestedId = parseInt(this.request.params.id);
-console.log(requestedId);
+
 const recipe = recipes.find(recipe => recipe.id === requestedId);
-console.log(recipe);
+
 
     if (!recipe) {
-    return this.response.status(404).render("recipePage", {
-        message: "Recette introuvable"
+    return this.response.status(404).render("../errors/404", {
+        
     });
 }
 
