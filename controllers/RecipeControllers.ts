@@ -63,9 +63,78 @@ const recipe = recipes.find(recipe => recipe.id === requestedId);
     public addRecipe(){
         const result = this.request.body;
 
+        if(!this.resultValidator(result)){
+            this.response.render("addRecipePage", {categories, ingredients});
+            return;
+        }
+
         this.insertIntoData(result);
 
         this.response.redirect("/categories");
+    }
+
+    private resultValidator(result): boolean{
+        if(!result.recipeTitle || (typeof result.recipeTitle === "string" && result.recipeTitle === "")){
+            return false;
+        }
+
+        if(!result.recipeDescription || (typeof result.recipeDescription === "string" && result.recipeDescription === "")){
+            return false;
+        }
+
+        if(!result.recipeCategory || (typeof result.recipeCategory === "string" && categories.find(category => { return category.name === result.recipeCategory }) === undefined)){
+            return false;
+        }
+
+        if(!result.recipeIngredientsName){
+            return false;
+        }
+        if(typeof result.recipeIngredientsName === "string"){
+            result.recipeIngredientsName = [result.recipeIngredientsName];
+        }
+        for (const name of result.recipeIngredientsName) {
+            if(ingredients.find(ingredient => { return ingredient.name === name }) === undefined){
+                return false;
+            }
+        }
+
+        if(!result.recipeIngredientsQuantity){
+            return false;
+        }
+        if(typeof result.recipeIngredientsQuantity === "string"){
+            result.recipeIngredientsQuantity = [result.recipeIngredientsQuantity];
+        }
+        for (const quantity of result.recipeIngredientsQuantity) {
+            if (!/^[0-9.]+$/.test(quantity)) {
+                return false;
+            }
+        }
+
+        if(!result.recipeIngredientsUnit){
+            return false;
+        }
+        if(typeof result.recipeIngredientsUnit === "string"){
+            result.recipeIngredientsUnit = [result.recipeIngredientsUnit];
+        }
+        for (const unit of result.recipeIngredientsUnit) {
+            if(unit === ""){
+                return false;
+            }
+        }
+
+        if(!result.recipeStep){
+            return false;
+        }
+        if(typeof result.recipeStep === "string"){
+            result.recipeStep = [result.recipeStep];
+        }
+        for (const step of result.recipeStep) {
+            if(step === ""){
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private insertIntoData(result){
@@ -76,7 +145,8 @@ const recipe = recipes.find(recipe => recipe.id === requestedId);
         let recipeId: number | undefined = recipes.reverse().find((recipe) => {
             return Math.round(recipe.id / 100) === catId;
         })?.id;
-        
+        recipes.reverse();
+
         if(recipeId){
             recipeId++;
             recipes.push({ 
@@ -85,12 +155,8 @@ const recipe = recipes.find(recipe => recipe.id === requestedId);
                 description: result.recipeDescription 
             });
 
-            console.log(recipes.find((recipe) => {
-                return recipe.id === recipeId;
-            }));
-
-            let curStep = 1;
-            let curId = recipeInstructions[recipeInstructions.length -1].id + 1;
+            let curStep: number = 1;
+            let curId: number = recipeInstructions[recipeInstructions.length -1].id + 1;
             
             result.recipeStep.forEach(step => {
                 recipeInstructions.push({
@@ -103,7 +169,27 @@ const recipe = recipes.find(recipe => recipe.id === requestedId);
                 curId++;
             });
 
-            console.log(recipeInstructions);
+
+            curId = recipeIngredients[recipeIngredients.length -1].id + 1;
+            result.recipeIngredientsName.forEach((ingredientName, index) => {
+                const ingredientUnit: string = result.recipeIngredientsUnit[index];
+                const ingredientQuantity: number = result.recipeIngredientsQuantity[index] as number;
+
+                const ingredId: number | undefined = ingredients.find((ingredient) => {
+                    return ingredient.name === ingredientName;
+                })?.id;
+
+                if(ingredId){
+                    recipeIngredients.push({
+                        id: curId,
+                        ingredientId: ingredId,
+                        quantity: ingredientQuantity,
+                        recipeId: recipeId as number,
+                        unit: ingredientUnit
+                    });
+                    curId++;
+                }
+            });
         }
     }
 }
