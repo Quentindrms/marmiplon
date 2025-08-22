@@ -22,6 +22,7 @@ export type Recipe = {
 	id: number;
 	title: string;
 	description: string;
+	image: string;
 };
 
 export type RecipeComment = {
@@ -184,31 +185,41 @@ export const recipeInstructions: RecipeInstruction[] = [
 ];
 
 export const recipes: Recipe[] = [
-	{
+{
 		id: 101,
 		title: "Bruschetta",
 		description: "Une entrée italienne classique.",
+		image: "/assets/bruschetta.jpg", // Caminho ajustado
 	},
 	{
 		id: 102,
 		title: "Salade Grecque",
 		description: "Une salade fraîche et savoureuse.",
+		image: "/assets/salade-grecque.jpg",
 	},
 	{
 		id: 201,
 		title: "Pâtes Carbonara",
 		description: "Un plat italien riche et crémeux.",
+		image: "/assets/pates-carbonara.jpg",
 	},
 	{
 		id: 202,
 		title: "Poulet Rôti",
 		description: "Un poulet rôti aux herbes de Provence.",
+		image: "/assets/poulet-roti.jpg",
 	},
-	{ id: 301, title: "Tiramisu", description: "Un dessert italien classique." },
+	{
+		id: 301,
+		title: "Tiramisu",
+		description: "Un dessert italien classique.",
+		image: "/assets/tiramisu.jpg",
+	},
 	{
 		id: 302,
 		title: "Tarte aux Pommes",
 		description: "Une tarte sucrée à la cannelle.",
+		image: "/assets/tarte-aux-pommes.jpg",
 	},
 ];
 

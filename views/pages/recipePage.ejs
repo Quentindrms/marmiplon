@@ -7,13 +7,18 @@
       <div class="container">
         <div class="modal-header">
           <div class="modal-content">
+            <br>
             <h1 class="hero-title"><%= recipe.title %></h1>
+            <img src="<%= recipe.image %>" alt="<%= recipe.title %>" class="recipe-image">
+            <br>
             <p><%= recipe.description %></p>
+            <br>
           </div>
         </div>
 
         <div class="modal-header">
           <div class="modal-content">
+            <br>
             <h2 class="section-title">Ingrédients</h2>
             <div class="modal-body" id="modal-body">
               <ul class="recipes-grid">
@@ -30,6 +35,7 @@
 
         <div class="modal-header">
           <div class="modal-content">
+            <br>
             <h2 class="section-title">Préparation</h2>
             <div class="modal-body" id="modal-body">
               <ol class="recipes-grid">
@@ -43,6 +49,7 @@
 
         <div class="modal-header">
           <div class="modal-content">
+            <br>
             <h2 class="section-title">Commentaires</h2>
             <div class="modal-body" id="modal-body">
               <% if (comments.length === 0) { %>
