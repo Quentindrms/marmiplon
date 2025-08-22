@@ -63,14 +63,14 @@ include("../partials/header") %>
       <h2 class="section-title">Recettes populaires</h2>
       <div class="recipes-grid" id="popular-recipes"></div>
     </div>
-  </section>
 
-  <div class="recipes-grid">
-    <% recipes.forEach((recipe) => { %> 
-      <%- include("../partials/recipeCard",
-    {recipe: recipe}) %> 
-    <% }); %>
+    
+    <div class="recipes-grid">
+      <ul class="recipes-grid">
+      <% recipes.forEach((recipe) => { %> <%- include("../partials/recipeCard",
+      {recipe: recipe}) %> <% }); %>
+    </ul>
   </div>
-
-  <%- include("../partials/footer") %>
+  </section>
 </main>
+    <%- include("../partials/footer") %>
