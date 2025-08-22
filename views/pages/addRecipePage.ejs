@@ -8,10 +8,20 @@
             <div class="recipe-form-input">
                 <label for="recipe-title">Titre de la recette</label>
                 <input type="text" id="recipe-title" name="recipeTitle">
+                <% if (errors?.title) { %>
+                    <small id="title-error" style="color:#f44336">
+                        <%= errors.title %>
+                    </small>
+                <% } %>
             </div>
             <div class="recipe-form-input">
                 <label for="recipe-desc">Description</label>
                 <textarea type="text" id="recipe-desc" name="recipeDescription"></textarea>
+                <% if (errors?.desc) { %>
+                    <small id="desc-error" style="color:#f44336">
+                        <%= errors.desc %>
+                    </small>
+                <% } %>
             </div>
             <div class="recipe-form-input">
                 <label for="recipe-category">Catégories</label>
@@ -20,6 +30,11 @@
                         <option value="<%= category.name %>"><%= category.name %></option>
                     <% }) %>
                 </select>
+                <% if (errors?.category) { %>
+                    <small id="category-error" style="color:#f44336">
+                        <%= errors.category %>
+                    </small>
+                <% } %>
             </div>
             <div class="recipe-form-input">
                 <label>Ingrédients / Quantité</label>
@@ -42,11 +57,21 @@
                     </select>
                 </div>
                 <button type="button" id="add-ingredient">+</button>
+                <% if (errors?.ingredient) { %>
+                    <small id="ingredient-error" style="color:#f44336">
+                        <%= errors.ingredient %>
+                    </small>
+                <% } %>
             </div>
             <div class="recipe-form-input">
                 <label for="recipe-step">Étapes</label>
                 <textarea id="recipe-step" name="recipeStep"></textarea>
                 <button type="button" id="add-step">+</button>
+                <% if (errors?.step) { %>
+                    <small id="step-error" style="color:#f44336">
+                        <%= errors.step %>
+                    </small>
+                <% } %>
             </div>
             <button type="submit">Valider</button>
         </form>
