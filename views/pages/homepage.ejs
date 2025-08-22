@@ -63,8 +63,8 @@
       <h2 class="section-title">Recettes populaires</h2>
       <div class="recipes-grid" id="popular-recipes"></div>
     </div>
-  </section>
 
+<<<<<<< HEAD
   <div class="recipes-grid">
     <% recipes.forEach((recipe) => { %>
       <%- include("../partials/recipeCard", {recipe: recipe}) %>
@@ -76,3 +76,15 @@
  <
   <%- include("../partials/footer") %>
 </main>
+=======
+    
+    <div class="recipes-grid">
+      <ul class="recipes-grid">
+      <% recipes.forEach((recipe) => { %> <%- include("../partials/recipeCard",
+      {recipe: recipe}) %> <% }); %>
+    </ul>
+  </div>
+  </section>
+</main>
+    <%- include("../partials/footer") %>
+>>>>>>> refs/remotes/origin/ingridFront
