@@ -5,10 +5,10 @@ const isProduction = process.env.NODE_ENV === "production";
 
 export default {
   // Configuration de Rollup
-  input: "src/ts/index.ts",
+  input: "src/ts/*",
   output: [
     {
-      dir: "public/js",
+      dir: "public/js/",
       format: "umd",
       sourcemap: !isProduction,
     },
