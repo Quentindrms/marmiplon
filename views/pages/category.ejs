@@ -2,7 +2,7 @@
 <%- include("../partials/header") %>
 
 <main class="main">
-    <section class="popular-section container categories-grid">
+    <section class="categories-section container categories-grid">
         <a href="/categories">
             <div class="category-card fade-in">
                 <img class="recipe-image" src="/assets/poulet-roti.jpg" alt="Photo d'un plat">
@@ -11,7 +11,7 @@
             </div>
         </a>
         <a href="/categories/entrees">
-            <div class="category-card fade-in, img-recipe">
+            <div class="category-card fade-in">
                 <img class="recipe-image" src="/assets/bruschetta.jpg" alt="Photo d'une entrée">
                 <h3><%= categories[0].name %></h3>
                 <p><%= categories[0].description %></p>
@@ -33,17 +33,46 @@
         </a>
     </section>
     <section class="popular-section container">
-        <% if (category){ %>
+        <% if (category) { %>
             <h2 class="section-title">Recettes : <%= category.name %></h2>
         <% } else { %>
             <h2 class="section-title">Toutes les recettes</h2>
         <% } %>
         <ul class="recipes-grid">
             <% recipes.forEach((recipe) => { %>
-                    <%- include("../partials/recipeCard", {recipe: recipe}) %>
+                <%- include("../partials/recipeCard", {recipe: recipe}) %>
             <% }) %>
         </ul>
     </section>
+
+    <!-- <script src="./js/script.js" type="module"><script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            const themeIcon = themeToggle.querySelector('.theme-icon');
+
+            
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            body.classList.add(savedTheme + '-mode');
+            updateThemeIcon(savedTheme);
+
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = body.classList.contains('light-mode') ? 'light' : 'night';
+                const newTheme = currentTheme === 'light' ? 'night' : 'light';
+
+                body.classList.remove(currentTheme + '-mode');
+                body.classList.add(newTheme + '-mode');
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+
+            function updateThemeIcon(theme) {
+                themeIcon.textContent = theme === 'light' ? '🌙' : '☀';
+            }
+        });
+
+    </script> !-->
+
 </main>
 
 <%- include("../partials/footer") %>

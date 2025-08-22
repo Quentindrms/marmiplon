@@ -1,74 +1,99 @@
-<%- include('../partials/head', {title:'Accueil'}) %> <%- include
-('../partials/header') %> <% if (recipe) { %>
+<%- include('../partials/head', {title: recipe ? recipe.title : 'Recette'}) %>
+<%- include('../partials/header') %>
 
-<section class="hero" id="home">
-  <main class="main">
-    <div class="hero-actions">
+<main class="main">
+  <% if (recipe) { %>
+    <section class="hero" id="home">
       <div class="container">
-        <div class="modal-header">
-          <div class="modal-content">
-            <br>
-            <h1 class="hero-title"><%= recipe.title %></h1>
-            <img src="<%= recipe.image %>" alt="<%= recipe.title %>" class="recipe-image">
-            <br>
-            <p><%= recipe.description %></p>
-            <br>
-          </div>
-        </div>
-
-        <div class="modal-header">
-          <div class="modal-content">
-            <br>
-            <h2 class="section-title">Ingrédients</h2>
-            <div class="modal-body" id="modal-body">
-              <ul class="recipes-grid">
-                <% ingredients.forEach(ingred => { %>
-                <li>
-                  <%= ingred.quantity %> <%= ingred.unit %> de <%= ingred.name
-                  %>
-                </li>
-                <% }) %>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal-header">
-          <div class="modal-content">
-            <br>
-            <h2 class="section-title">Préparation</h2>
-            <div class="modal-body" id="modal-body">
-              <ol class="recipes-grid">
-                <% instructions.forEach(step => { %>
-                <li><%= step.description %></li>
-                <% }) %>
-              </ol>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal-header">
-          <div class="modal-content">
-            <br>
-            <h2 class="section-title">Commentaires</h2>
-            <div class="modal-body" id="modal-body">
-              <% if (comments.length === 0) { %>
-              <p>Aucun commentaire pour l’instant.</p>
-              <% } else { %> <% comments.forEach(chat => { %>
-              <div>
-                <strong><%= chat.username %></strong> –
-                <em><%= chat.createdAt.toLocaleDateString() %></em>
-                <p><%= chat.content %></p>
-                <p>Note : <%= chat.note ? chat.note : "Non noté" %></p>
-              </div>
-              <% }) %> <% } %> <% } else { %>
-              <h1><%= message || "Recette introuvable" %></h1>
-              <% } %>
-            </div>
-          </div>
+        <div class="hero-content">
+          <h1 class="hero-title"><%= recipe.title %></h1>
+          <img src="<%= recipe.image %>" alt="<%= recipe.title %>" class="recipe-image">
+          <br>
+          <p class="hero-description"><%= recipe.description %></p>
         </div>
       </div>
-    </div>
-  </main>
-</section>
+    </section>
+    <section class="recipe-section container">
+      <br>
+      <h2 class="section-title">Ingrédients</h2>
+      <div class="ingredients-list">
+        <ul>
+          <% ingredients.forEach(ingred => { %>
+            <li class="ingredient-item">
+              <%= ingred.quantity %> <%= ingred.unit %> de <%= ingred.name %>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </section>
+
+    <section class="recipe-section container">
+      <h2 class="section-title">Préparation</h2>
+      <div class="instructions-list">
+        <ol>
+          <% instructions.forEach((step, index) => { %>
+            <li class="instruction-item">
+              <span class="step-number"><%= index + 1 %></span>
+              <%= step.description %>
+            </li>
+          <% }) %>
+        </ol>
+      </div>
+    </section>
+
+    <section class="comments-section container">
+      <h2 class="section-title">Commentaires</h2>
+      <div class="comments-list">
+        <% if (comments.length === 0) { %>
+          <p class="text-muted">Aucun commentaire pour l’instant.</p>
+        <% } else { %>
+          <% comments.forEach(chat => { %>
+            <div class="comment-item">
+              <div class="comment-header">
+                <span class="comment-author"><%= chat.username %></span>
+                <span class="comment-date"><%= chat.createdAt.toLocaleDateString() %></span>
+              </div>
+              <div class="comment-content"><%= chat.content %></div>
+              <div class="comment-rating">Note : <%= chat.note ? chat.note : "Non noté" %></div>
+            </div>
+          <% }) %>
+        <% } %>
+      </div>
+    </section>
+  <% } else { %>
+    <section class="hero error_title">
+      <div class="container">
+        <h1 class="hero-title"><%= message || "Recette introuvable" %></h1>
+      </div>
+    </section>
+  <% } %>
+
+<!-- <script src="./js/script.js" type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+      const themeIcon = themeToggle.querySelector('.theme-icon');
+
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      body.classList.add(savedTheme + '-mode');
+      updateThemeIcon(savedTheme);
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = body.classList.contains('light-mode') ? 'light' : 'night';
+        const newTheme = currentTheme === 'light' ? 'night' : 'light';
+
+        body.classList.remove(currentTheme + '-mode');
+        body.classList.add(newTheme + '-mode');
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+      });
+
+      function updateThemeIcon(theme) {
+        themeIcon.textContent = theme === 'light' ? '🌙' : '☀';
+      }
+    });
+  </script></script> !-->
+
+</main>
+
 <%- include("../partials/footer") %>

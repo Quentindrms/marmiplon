@@ -1,5 +1,5 @@
-<%- include('../partials/head', {title:'Accueil'}) %> <%-
-include("../partials/header") %>
+<%- include('../partials/head', {title:'Accueil'}) %>
+<%- include("../partials/header") %>
 
 <!-- Main Content -->
 <main class="main">
@@ -8,7 +8,7 @@ include("../partials/header") %>
     <div class="container">
       <div class="hero-content">
         <h1 class="hero-title">
-          Bienvenue sur <span class="text-accent">Marmiplon</span>
+        <b> Bienvenue sur <span class="text-accent">Marmiplon</b> </span>
         </h1>
         <p class="hero-description">
           Découvrez une collection de recettes délicieuses et faciles à
@@ -66,11 +66,13 @@ include("../partials/header") %>
   </section>
 
   <div class="recipes-grid">
-    <% recipes.forEach((recipe) => { %> 
-      <%- include("../partials/recipeCard",
-    {recipe: recipe}) %> 
+    <% recipes.forEach((recipe) => { %>
+      <%- include("../partials/recipeCard", {recipe: recipe}) %>
     <% }); %>
   </div>
 
+  <script src="./js/script.js" type="module"></script>
+
+ <
   <%- include("../partials/footer") %>
 </main>
