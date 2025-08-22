@@ -5,7 +5,7 @@ const isProduction = process.env.NODE_ENV === "production";
 
 export default {
   // Configuration de Rollup
-  input: "src/ts/*",
+  input: "src/ts/addRecipeFunctionality.ts",
   output: [
     {
       dir: "public/js/",

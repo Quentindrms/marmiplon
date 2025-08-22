@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsx index.ts",
+    "build": "rollup -c",
     "dev": "tsx watch index.ts"
   },
   "repository": {
@@ -25,7 +26,9 @@
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "rollup": "^4.47.1",
-    "tsx": "^4.20.4"
+    "tslib": "^2.8.1",
+    "tsx": "^4.20.4",
+    "typescript": "^5.9.2"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
