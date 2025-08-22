@@ -956,3 +956,61 @@ body {
     opacity: 1;
   }
 }
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    margin: var(--spacing-3xl);
+    background-color:  var(--primary-light);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-2xl);
+}
+
+.form select{
+    background-color: var(--white);
+    border-width: 1px;
+    padding: var(--spacing-sm);
+}
+
+.form input{
+    padding: var(--spacing-sm);
+}
+
+.form textarea{
+    padding: var(--spacing-sm);
+    field-sizing: content;
+}
+
+.recipe-form-input{
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    width: 100%;
+}
+
+.form-field{
+    width: 100%;
+    min-height: 50px;
+}
+
+.form-line{
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-md);
+}
+
+.error-message{
+    color: #f44336;
+}
+
+@media screen {
+    .form{
+        padding: var(--spacing-sm);
+        margin: var(--spacing-sm);
+    }
+
+    .form-line{
+        gap: 4px;
+    }
+}
