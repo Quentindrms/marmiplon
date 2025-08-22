@@ -5,6 +5,8 @@ function createDeleteLineButton(): HTMLButtonElement {
     const buttonDelete : HTMLButtonElement = document.createElement("button");
     buttonDelete.type = "button";
     buttonDelete.innerText = "-";
+    buttonDelete.classList.add("btn-secondary");
+    buttonDelete.classList.add("btn");
 
     buttonDelete.addEventListener("click", (event) => {
         if (event.target instanceof HTMLElement){
@@ -25,6 +27,7 @@ function addIngredientLine(){
             const newNodeIngredientName : Node = nodeIngredientName.cloneNode(true);
 
             const input: HTMLInputElement = document.createElement("input");
+            input.classList.add("form-field");
             input.name = "recipeIngredientsQuantity";
             input.type = "text";
 
@@ -33,6 +36,7 @@ function addIngredientLine(){
             const buttonDelete : HTMLButtonElement = createDeleteLineButton();
 
             divLine.append(newNodeIngredientName, input, newNodeIngredientUnit, buttonDelete);
+            divLine.classList.add("form-line");
         }
         
         addIngredient.before(divLine);
@@ -49,10 +53,13 @@ function addStepLine(){
 
         const textArea :HTMLTextAreaElement = document.createElement("textarea");
         textArea.name = "recipeStep";
+        textArea.classList.add("form-field");
 
         const buttonDelete : HTMLButtonElement = createDeleteLineButton();
 
         divLine.append(textArea, buttonDelete);
+        divLine.classList.add("form-line");
+
         addStep.before(divLine);
     }
 }
