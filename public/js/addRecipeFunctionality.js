@@ -9,6 +9,8 @@
         const buttonDelete = document.createElement("button");
         buttonDelete.type = "button";
         buttonDelete.innerText = "-";
+        buttonDelete.classList.add("btn-secondary");
+        buttonDelete.classList.add("btn");
         buttonDelete.addEventListener("click", (event) => {
             var _a;
             if (event.target instanceof HTMLElement) {
@@ -25,11 +27,13 @@
             if (nodeIngredientName && nodeIngredientUnit) {
                 const newNodeIngredientName = nodeIngredientName.cloneNode(true);
                 const input = document.createElement("input");
+                input.classList.add("form-field");
                 input.name = "recipeIngredientsQuantity";
                 input.type = "text";
                 const newNodeIngredientUnit = nodeIngredientUnit.cloneNode(true);
                 const buttonDelete = createDeleteLineButton();
                 divLine.append(newNodeIngredientName, input, newNodeIngredientUnit, buttonDelete);
+                divLine.classList.add("form-line");
             }
             addIngredient.before(divLine);
         }
@@ -42,8 +46,10 @@
             const divLine = document.createElement("div");
             const textArea = document.createElement("textarea");
             textArea.name = "recipeStep";
+            textArea.classList.add("form-field");
             const buttonDelete = createDeleteLineButton();
             divLine.append(textArea, buttonDelete);
+            divLine.classList.add("form-line");
             addStep.before(divLine);
         }
     }
