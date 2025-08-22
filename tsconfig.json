@@ -8,8 +8,9 @@
   },
   "include": [
     "src"
-  ],
+, "public/data.ts"  ],
   "exclude": [
     "node_modules"
   ]
+  
 }
