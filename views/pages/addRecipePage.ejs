@@ -1,0 +1,82 @@
+<%- include("../partials/head", {title: "Ajout de recettes"}) %>
+<%- include("../partials/header") %>
+
+<main class="main">
+    <section class="popular-section container">
+        <h1 class="section-title">Ajouter une recette</h1>
+        <form class="form" method="post" action="/recipe/add">
+            <div class="recipe-form-input">
+                <label for="recipe-title">Titre de la recette</label>
+                <input type="text" class="form-field" id="recipe-title" name="recipeTitle">
+                <% if (errors?.title) { %>
+                    <small id="title-error" class="error-message">
+                        <%= errors.title %>
+                    </small>
+                <% } %>
+            </div>
+            <div class="recipe-form-input">
+                <label for="recipe-desc">Description</label>
+                <textarea type="text" class="form-field" id="recipe-desc" name="recipeDescription"></textarea>
+                <% if (errors?.desc) { %>
+                    <small id="desc-error" class="error-message">
+                        <%= errors.desc %>
+                    </small>
+                <% } %>
+            </div>
+            <div class="recipe-form-input">
+                <label for="recipe-category">Catégories</label>
+                <select name="recipeCategory" class="form-field" id="recipe-category">
+                    <% categories.forEach((category) => { %>
+                        <option value="<%= category.name %>"><%= category.name %></option>
+                    <% }) %>
+                </select>
+                <% if (errors?.category) { %>
+                    <small id="category-error" class="error-message">
+                        <%= errors.category %>
+                    </small>
+                <% } %>
+            </div>
+            <div class="recipe-form-input">
+                <label>Ingrédients / Quantité</label>
+                <div id="recipe-ingredients" class="form-line">
+                    <select name="recipeIngredientsName" class="form-field" id="recipe-ingredients-name">
+                        <% ingredients.forEach((ingredient) => { %>
+                            <option value="<%= ingredient.name %>"><%= ingredient.name %></option>
+                        <% }) %>
+                    </select>
+                    <input type="text" class="form-field" name="recipeIngredientsQuantity">
+                    <select name="recipeIngredientsUnit" class="form-field" id="recipe-ingredients-unit">
+                        <option value="unités">unités</option>
+                        <option value="grammes">grammes</option>
+                        <option value="pincées">pincées</option>
+                        <option value="gousses">gousses</option>
+                        <option value="millilitres">millilitres</option>
+                        <option value="tranche">tranche</option>
+                        <option value="feuilles">feuilles</option>
+                        <option value="cuillères à soupe">cuillères à soupe</option>
+                    </select>
+                </div>
+                <button type="button" id="add-ingredient" class="btn btn-secondary">+</button>
+                <% if (errors?.ingredient) { %>
+                    <small id="ingredient-error" class="error-message">
+                        <%= errors.ingredient %>
+                    </small>
+                <% } %>
+            </div>
+            <div class="recipe-form-input">
+                <label for="recipe-step">Étapes</label>
+                <textarea id="recipe-step" class="form-field" name="recipeStep"></textarea>
+                <button type="button" id="add-step" class="btn btn-secondary">+</button>
+                <% if (errors?.step) { %>
+                    <small id="step-error" class="error-message">
+                        <%= errors.step %>
+                    </small>
+                <% } %>
+            </div>
+            <button type="submit" class="btn btn-primary">Valider</button>
+        </form>
+    </section>
+</main>
+<script type="module" src="/js/addRecipeFunctionality.js"></script>
+
+<%- include("../partials/footer") %>
