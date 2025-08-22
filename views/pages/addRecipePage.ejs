@@ -9,7 +9,7 @@
                 <label for="recipe-title">Titre de la recette</label>
                 <input type="text" id="recipe-title" name="recipeTitle">
                 <% if (errors?.title) { %>
-                    <small id="title-error" style="color:#f44336">
+                    <small id="title-error" class="error-message">
                         <%= errors.title %>
                     </small>
                 <% } %>
@@ -18,7 +18,7 @@
                 <label for="recipe-desc">Description</label>
                 <textarea type="text" id="recipe-desc" name="recipeDescription"></textarea>
                 <% if (errors?.desc) { %>
-                    <small id="desc-error" style="color:#f44336">
+                    <small id="desc-error" class="error-message">
                         <%= errors.desc %>
                     </small>
                 <% } %>
@@ -31,7 +31,7 @@
                     <% }) %>
                 </select>
                 <% if (errors?.category) { %>
-                    <small id="category-error" style="color:#f44336">
+                    <small id="category-error" class="error-message">
                         <%= errors.category %>
                     </small>
                 <% } %>
@@ -58,7 +58,7 @@
                 </div>
                 <button type="button" id="add-ingredient">+</button>
                 <% if (errors?.ingredient) { %>
-                    <small id="ingredient-error" style="color:#f44336">
+                    <small id="ingredient-error" class="error-message">
                         <%= errors.ingredient %>
                     </small>
                 <% } %>
@@ -68,7 +68,7 @@
                 <textarea id="recipe-step" name="recipeStep"></textarea>
                 <button type="button" id="add-step">+</button>
                 <% if (errors?.step) { %>
-                    <small id="step-error" style="color:#f44336">
+                    <small id="step-error" class="error-message">
                         <%= errors.step %>
                     </small>
                 <% } %>
